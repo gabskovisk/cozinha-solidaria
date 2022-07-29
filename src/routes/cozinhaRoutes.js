@@ -6,11 +6,9 @@ const controller = require("../controller/cozinhaController");
 
 router.get('/inputs', controller.getAllInputs);
 
-router.get('/input/:id', controller.getInputById)
-
 router.post('/create', controller.createInput);
 
-// router.put('/', controller);
+router.put('/update/:id', controller.updateInput);
 
 router.delete('/delete/:id', controller.deleteInput);
 
