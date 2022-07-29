@@ -1,7 +1,7 @@
 const express = require("express");
-const routes = express.Router();
+const router = express.Router();
 
-routes.get("/",  (req, res) => {
+router.get("/",  (req, res) => {
     res.status(200).send({
         title: "ReprogramaON15 -> Cozinha Solidária - Projeto Final",
         version: "1.0.0",
@@ -9,4 +9,4 @@ routes.get("/",  (req, res) => {
     })
 })
 
-module.exports = routes
+module.exports = router
