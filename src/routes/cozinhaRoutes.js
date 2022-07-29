@@ -6,6 +6,8 @@ const controller = require("../controller/cozinhaController");
 
 router.get('/inputs', controller.getAllInputs);
 
+router.get('/input/name', controller.getInputByName);
+
 router.post('/create', controller.createInput);
 
 router.put('/update/:id', controller.updateInput);

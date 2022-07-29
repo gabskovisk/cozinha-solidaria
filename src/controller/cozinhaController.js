@@ -7,31 +7,15 @@ const getAllInputs = async (req, res) => {
             if (err) {
                 res.status(500).send({
                     message: err.message
-                })
-            }
+                });
+            };
             return res.status(200).json(cozinha)
-        })
+        });
     } catch (err) {
         console.error(err);
         res.status(500)        
     };
 };
-
-// const getInputById = async (req, res) =>  {
-//     try {
-//         const findInput = await CozinhaSchema.getInputById(req.params.id)
-//         res.status(200).send({
-//             "Message":"Input found:",
-//             findInput
-//         })
-        
-//     } catch (err) {
-//         console.error(err)
-//         res.status(404).json({ 
-//             message: err.message 
-//         });
-//     };
-// };
 
  // POST
 const createInput = async (req, res) => {
@@ -61,39 +45,37 @@ const createInput = async (req, res) => {
 // PUT
 const updateInput = async (req, res) => {    
     try {
-        // const { amount, expire } = req.body;
-
         const inputFound = await CozinhaSchema.findById(req.params.id);
 
-        inputFound.amount = req.body.amount || inputFound.amount
-        inputFound.expire = req.body.expire || inputFound.expire
+        inputFound.amount = req.body.amount || inputFound.amount;
+        inputFound.expire = req.body.expire || inputFound.expire;
 
-        const savedInputUpdate = await inputFound.save()
+        const savedInputUpdate = await inputFound.save();
         res.status(200).send({
             "message": "Input updated successfully",
             savedInputUpdate
-        }) 
+        });
     } catch (err) {
         console.error(err);
         res.status(500).json({
             message: err.message
-        })
-    }    
-}
+        });
+    };    
+};
 
 //DELETE
-    const deleteInput = async (req,res) => {
-        try {
-            const deletedInput = await CozinhaSchema.deleteInput(req.params.id)
+const deleteInput = async (req,res) => {
+    try {
+        const deletedInput = await CozinhaSchema.deleteInput(req.params.id)
     
-            res.status(200).send({
-                "message": "Input deleted successfully",
-                deletedInput
-            })
-        } catch(err) {
-            console.error(err);
-        };
+        res.status(200).send({
+            "message": "Input deleted successfully",
+            deletedInput
+        })
+    } catch(err) {
+        console.error(err);
     };
+};
 
 
 module.exports = {
