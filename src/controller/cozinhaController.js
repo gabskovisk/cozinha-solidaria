@@ -66,14 +66,17 @@ const updateInput = async (req, res) => {
 //DELETE
 const deleteInput = async (req,res) => {
     try {
-        const deletedInput = await CozinhaSchema.deleteInput(req.params.id)
-    
+        const deletedInput = await CozinhaSchema.findByIdAndDelete(req.params.id)    
         res.status(200).send({
             "message": "Input deleted successfully",
-            deletedInput
-        })
+            deletedInput           
+        });
+
     } catch(err) {
         console.error(err);
+        res.status(500).send({
+            message: err.message
+        });
     };
 };
 
